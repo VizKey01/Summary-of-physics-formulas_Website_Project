@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {background-image: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(219, 219, 219, 1) 100%);
+      margin:0;
+      padding:0;
+      }
+      .menu-bar {
+        background-color: #D9D8D7;
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        position:fixed;
+        top:0;
+        right:0;
+        left:0;
+        font-family:Good Times;
+      }
+      .item {
+        color: black;
+        background-color: transparent;
+        font-size: 18px;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 8px 16px;
+        text-decoration:none;
+      }
+      .item.title {
+        font-weight: 600;
+        font-size:25px;
+        margin-top:5px;
+      }
+      .search-input{
+        padding:6px;
+      }
+      .search-icon{
+        display:inline-block;
+        width:15px;
+        height:15px;
+      }
+      .search-text{
+        display:none;
+      }
+      @media screen and (min-width:500px){
+        .search-text{
+          display:inline-block;
+        }
+      }
+      
+      #font{
+        font-family:Good Times;
+        text-decoration:none;
+        }
+      .main{
+        font-size:20px;
+        text-align:center;
+        background-image: rgb(99, 98, 98);
+        width:1500px;
+        margin-bottom:20px;
+        padding:30px;
+        margin: auto;
+        max-width:2000;
+        border:0.5px solid #D9D8D7;
+        }
+      .subject{
+        display:block;
+        margin-left:30px;
+        font-size:23px;
+      }
+      .grid{
+        display:grid;
+        column-gap: 15px;
+        row-gap: 15px;
+        margin: 15px;
+        position:relative;
+        justify-items:center;
+        align-items:center;
+      }  
+      @media screen and (max-width:599px) {/*phone*/
+        .grid{
+            grid-template-columns:1fr 1fr ;
+          }
+      }
+      @media screen and (min-width:560px) and (max-width:919px){/*ipad,phone*/
+        .grid{
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
+      @media screen and (min-width:920px) and (max-width:1200px){/*ipad*/
+        .grid{
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+        } 
+      }
+      @media screen and (min-width:1200px){/*pc*/
+        .grid{
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        } 
+      }
+      .top{
+        display:grid;
+        grid-gab:20px;
+        grid-template-area:col
+          'homepage info-box1';
+        margin-top:40px;
+      }
+      .content1{
+        background-color: white;
+        border-radius:10px;
+        box-sizing: border-box;
+        position:relative;
+      }
+      .animate{
+        display:none;
+        
+        position:relative;
+        display:block;
+        opcity:0;
+        background-color:black;
+        grid-row: 1/3;
+        grid-columns:1/4;
+        transition:opcity 200ms ease-in-out;justify-content:bottom;
+      }
+      .animate:hover and{
+        opcity:1;     
+      }
+      .image{
+        width:100%;
+        display: block;
+        border-radius:10px;
+      }
+      #text-overlay{
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.62) 24%, rgba(0, 0, 0, 0) 65%);
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius:10px;
+      }
+      #text-style{
+          color: white;
+          position: absolute;
+          left: 10px;
+          right: 10px;
+          bottom: 10px;
+      }
+      .footer{
+        color:white;
+        background-color:#7e7a7a ;
+        width:1500px;
+        padding:20px;
+        margin: auto;
+        max-width:2000;
+        }
+    </style>
+    <title>รวมสูตรฟิสิกส์ ม.ปลาย</title>
+  </head>
+  
+
+  
+  
+  <body>
+    <header class="menu-bar">
+        <div class="group">
+          <a class="item title">FORMULARS</a>
+          
+         </div>
+         <div class="group">
+            <div class="item"> 
+                <input class="search-input" type ="search" >
+                <button class="search-input">
+                 <img class="search-icon" scr="https://drive.google.com/uc?id=1lzOn5AyfHDQhXz09Zxz9L4tGk1fmUPWwg">
+                 <span class="search-text">ค้นหาสูตร</span>
+                </button>
+            </div>
+          <a class="item" href="#">ม.4</a> 
+          <a class="item" href="#">ม.5</a>
+          <a class="item" href="#">ม.6</a>
+         </div>
+       </header>
+    <div class= "main" id ="font">
+      <h1>Includes formulas for use in school or college entrance exams</h1>
+      <p>(รวมสูตรเพื่อใช้ในโรงเรียนหรือสอบเข้ามหาลัย)</p>
+    </div>
+    <div class="subject" id="font">
+      <h3>physics</h3>
+    </div>
+    <div class="grid">/*กลศาส ไฟฟ้า สสาร คลื่น นิวเคลียร์*/
+      <a href="#" >
+        <div class="content1">
+          <img class="image" src="https://drive.google.com/uc?id=13FRZbR1DqIgrRzw1URv_MxtCAWqccH9W">
+          <div id="text-overlay">
+            <h3 id="text-style">กลศาสตร์</h3>
+          </div>
+        </div>
+      <a href="#">
+        <div class="content1">
+            <img class="image"src="https://drive.google.com/uc?id=1U2YB51_ZcZDsahADXf4e67nQq5GXDqz3">
+            <div id="text-overlay">
+             <h3 id="text-style">คลื่น</h3>
+          </div>
+        </div>
+      <a href="#" >
+        <div class="content1">
+            <img class="image"src="https://drive.google.com/uc?id=1h6cpUFSyOH-dik33-bGCal-NHD084Ep6">
+            <div id="text-overlay">
+              <h3 id="text-style">สสาร</h3>
+          </div>
+        </div>
+      <a href="#">
+        <div class="content1">
+            <img class="image"src="https://drive.google.com/uc?id=1hi3LyrB8EBCWS0FJfNisDrQIVMvc8fVd">
+            <div id="text-overlay">
+              <h3 id="text-style">ไฟฟ้า</h3>
+          </div>
+        </div>
+      <a href="#">
+        <div class="content1">
+            <img class="image"src="https://drive.google.com/uc?id=1PCwPJPHHmaEHlWgngJa5fwRzbXUYUxjR">
+            <div id="text-overlay">
+             <h3 id="text-style">นิวเคลียร์</h3>
+          </div>
+        </div>
+    </div> 
+    <footer class="footer" id="font">
+      <a id="font" href="#">ข้อมูลติดต่อ</a>
+      <p>Copyright 2023</p>
+    </footer>
+  </body>
+</html>

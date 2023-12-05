@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {background-color:#fafafa ;
+      margin:0;
+      padding:0;
+      }
+      /*ใส่เงา*/
+      :root{
+        --shadow:0 6px 8px rgba(104,104,104,0.8);
+      }
+      .menu-bar {
+        background-color: #D9D8D7;
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        position:fixed;
+        top:0;
+        right:0;
+        left:0;
+        font-family:Good Times;
+      }
+      .item {
+        color: black;
+        background-color: transparent;
+        font-size: 18px;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 8px 16px;
+        text-decoration:none;
+      }
+      .item.title {
+        font-weight: 600;
+        font-size:25px;
+        margin-top:5px;
+      }
+      .search-input{
+        padding:6px;
+      }
+      .search-icon{
+        display:inline-block;
+        width:15px;
+        height:15px;
+      }
+      .search-text{
+        display:none;
+      }
+      <!--@media screen and (min-width:500px){
+        .search-text{
+          display:inline-block;
+        }
+      }
+      #font{
+        font-family:Good Times;
+        text-decoration:none;
+        }
+        /*หน้าหลัก*/
+      .top{
+        display:grid;
+        column-gap:10px;
+        grid-template-areas:'homepage homepage info-box1 info-box1';
+        margin-top:40px;
+      }
+      /*หน้าหลักรอง*/
+      .homepage{
+        grid-area:homepage;
+        min-height:500px;
+        background-image: url('https://www.ielts.idp.co.th/IdpBlog/StudyTips/image003.jpg');
+        background-position: left;
+        background-size:1200px 570px;
+        background-repeat: no-repeat;
+        padding:5px;
+        margin-top:20px;
+        margin-bottom:20px;
+        display:flex;
+        flex-direction:column;
+        align-items:start;
+        justify-content:flex-end;
+        box-shadow:var(--shadow);
+      }
+      .homepage h1{
+        font-size:35px;
+        color:white;
+        margin-bottom:0px;
+        margin-left:20px;
+      }
+      .homepage p{
+        font-size:20px;
+        color:white;
+        margin-top:10px;
+        margin-left:20px;
+      }
+      /*กล่องทางขวา*/
+      .info-box1{
+        grid-area:info-box1;
+        background-color:lightgray;
+        margin-top:20px;
+        margin-bottom:20px;
+        box-shadow:var(--shadow);
+        align-items:center;
+        justify-items:center;
+      }
+      .info-box1 ul{
+        list-style:none;
+        text-align:center;
+        padding:0px;
+        margin:1px;
+
+      }
+      .info-box1 li{
+        font-size:22px;
+        text-align:left;
+        line-height:24px;
+      }
+      .info-box1 a{
+        text-decoration:none;
+        display:block;
+        color:black;
+        padding-left:10px;
+        border-bottom:none;
+        transition:0.5s;
+      }
+      .info-box1 a:hover{
+        background-color:gray;
+      }
+      info-box1 li li{
+        font-size:20px;
+      }
+      
+      
+/*หน้าหลักเก่า*/
+      .main{
+        font-size:20px;
+        text-align:center;
+        background-color:white;
+        padding:40px;
+        margin: auto;
+        max-width:2000;
+        border:0.5px solid #D9D8D7;
+        }
+        /*ชื่อวิชา*/
+      .subject{
+        display:block;
+        margin-left:30px;
+        font-size:23px;
+      }
+      /*เนื้อหาหลัก*/
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        justify-items: center;
+        align-items: stretch;
+        position:relative;
+        min-height: 500px;
+      }
+      @media screen and (max-width:599px) {
+          .grid{
+            grid-template-columns:1fr  ;
+          }
+      }
+      @media screen and (min-width:600px) and (max-width:1000px){
+        .grid{
+          grid-template-columns: 1fr 1fr ;
+        }
+      }
+      @media screen and (min-width:1001px) and (max-width:1400px){
+        .grid{
+          grid-template-columns: 1fr 1fr 1fr ;
+        } 
+      }
+      @media screen and (min-width:1401px){
+        .grid{
+          grid-template-columns: 1fr 1fr 1fr 1fr ;
+        } 
+      }
+      /*หล่องเนื้อหา*/
+      .content1{
+        background-color: white;
+        border-radius:10px;
+        box-sizing: border-box;
+        position:relative;
+        box-shadow:var(--shadow);
+        transition-property:transform;
+        transition-duration:0.3s;
+        transition-timing-function:ease-in;
+      }
+      .content1:hover{
+        transform:scale(1.05,1.05);
+      }
+      .wave {
+        position:relative;
+        background-image:url("https://amrasatu.files.wordpress.com/2012/05/las-vegas_monorail.jpg");
+        background-color: #666666;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position:relative;
+        width:350px;
+        height:250px;
+        border-radius:10px;
+        box-shadow:var(--shadow);
+        transition-property:transform;
+        transition-duration:0.3s;
+        transition-timing-function:ease-in;
+      }
+      .wave:hover{
+        transform:scale(1.05,1.05);
+      }
+      .light {
+        background-image:url("https://www.scimath.org/images/uploads/upload2/_350.jpg");
+        background-color: #666666;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position:relative;
+        width:350px;
+        height:250px;
+        border-radius:10px;
+        box-shadow:var(--shadow);
+        transition-property:transform;
+        transition-duration:0.3s;
+        transition-timing-function:ease-in;
+      }
+      .light:hover{
+        transform:scale(1.05,1.05);
+      }
+      .sound {
+        background-image:url("https://cdn.britannica.com/78/178878-138-E707FE4D/anything-space-change-states-matter-substance-forms.jpg?w=800&h=450&c=crop");
+        background-color: #666666;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position:relative;
+        width:350px;
+        height:250px;
+        border-radius:10px;
+        box-shadow:var(--shadow);
+        transition-property:transform;
+        transition-duration:0.3s;
+        transition-timing-function:ease-in;
+      }
+      .sound:hover{
+        transform:scale(1.05,1.05);
+      }
+      .electromagnetic {
+        background-image:url("https://www.smartenergyportal.ch/wp-content/uploads/2020/06/electricity.0.jpg");
+        background-color: #666666;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position:relative;
+        width:350px;
+        height:250px;
+        border-radius:10px;
+        box-shadow:var(--shadow);
+        transition-property:transform;
+        transition-duration:0.3s;
+        transition-timing-function:ease-in;
+      }
+      .electromagnetic:hover{
+        transform:scale(1.05,1.05);
+      }
+      .image{
+        width:100%;
+        display: block;
+        border-radius:10px;
+      }
+      /*ใส่ตัวอักษรบนรูป*/
+      #text-overlay{
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.62) 24%, rgba(0, 0, 0, 0) 65%);
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius:10px;
+        transition-delay:2s;
+        transition-duration:2s;
+        transition-timing-function:ease-in;
+      }
+      #text-overlay:hover{
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.85) 21%, rgba(0, 0, 0, 0.53) 54%, rgba(0, 0, 0, 0) 80%);
+      }
+      #text-style{
+        color: white;
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+      }
+      .footer{
+        color:white;
+        background-color:#9E9C9C ;
+        width:1500px;
+        padding:20px;
+        margin: auto;
+        max-width:2000;
+        }
+    </style>
+    <title>รวมสูตรฟิสิกส์ ม.ปลาย</title>
+  </head>
+  
+
+  
+  
+  <body>
+      <header class="menu-bar">
+        <div class="group">
+          <a href="https://script.google.com/macros/s/AKfycbyYzJpjboqB2exCfpUk9FLOp5CqQUj4ZDAh2g8z1Q0XwWkl8U-oleAQG55M1fKGPGk4BQ/exec" class="item title">FORMULARS</a>
+         </div>
+         <div class="group">
+            <div class="item"> 
+                <input class="search-input" type ="search" >
+                <button class="search-input">
+                 <img class="search-icon" scr="https://drive.google.com/uc?id=1lzOn5AyfHDQhXz09Zxz9L4tGk1fmUPWwg">
+                 <span class="search-text">ค้นหาสูตร</span>
+                </button>
+            </div>
+          <a class="item" href="#">ม.4</a> 
+          <a class="item" href="#">ม.5</a>
+          <a class="item" href="#">ม.6</a>
+         </div>
+       </header>
+    <section class="top">
+      <header class="homepage">
+        <h1>Includes formulas for use in school or college entrance exams.</h1>
+        <p>(รวมสูตรเพื่อใช้ในโรงเรียนหรือสอบเข้ามหาลัย)</p>
+      </header>
+      <div class="info-box1">
+        <ul>
+          <li><a href="#">ข้อสอบPAT3</a>
+            <ul>
+              <li><a href="#">pat64</a></li>
+              <li><a href="#">pat63</a></li>
+              <li><a href="#">pat62</a></li>
+              <li><a href="#">pat61</a></li>
+              <li><a href="#">pat60</a></li>
+              <li><a href="#">pat59</a></li>
+              <li><a href="#">pat58</a></li>
+            </ul>
+          </li>
+             <li><a href="#">ข้อสอบ...</a>
+                <ul>
+                    <li><a href="#">pat64</a></li>
+                    <li><a href="#">pat63</a></li>
+                    <li><a href="#">pat62</a></li>
+                    <li><a href="#">pat61</a></li>
+                    <li><a href="#">pat60</a></li>
+                </ul>
+            </li>
+        </ul>   
+      </div>
+    </section>
+    <!--
+    <div class= "main" id ="font">
+      <h1>Includes formulas for use in school or college entrance exams</h1>
+      <p>(รวมสูตรเพื่อใช้ในโรงเรียนหรือสอบเข้ามหาลัย)</p>
+    </div>
+-->
+    <div class="subject" id="font">
+      <h3>physics</h3>
+    </div>
+    <div class="grid">
+       <a href="https://script.google.com/macros/s/AKfycbw3Syg-ZITwzaYni28_jNxogLd3uYIofk2C-k3hX9iGH-oE7OmMm0Kjhqxmh9MIJhs/exec" >
+            <div class="item">
+                <div class="wave">
+                    <div id="text-overlay">
+                        <h3 id="text-style">กลศาสตร์</h3>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="https://script.google.com/macros/s/AKfycbzkzGQpBW6Q9SgBdA3sdl6PQTkIhmSaj3wA8vZTPJAkB4PA1lJYcsyF3lglWMLxOdItKQ/exec">  
+            <div class="item">
+                <div class="light">
+                    <div id="text-overlay">
+                        <h3 id="text-style">คลื่น</h3>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="https://script.google.com/macros/s/AKfycbxiyeW_418Eq8wy43UZiMohXGHVZKzbEoagRou8Vn04guArEpGn03gOHOBe2n_R6Wbh/exec" >      
+            <div class="item">
+                 <div class="sound">
+                    <div id="text-overlay">
+                        <h3 id="text-style">สสาร</h3>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="https://script.google.com/macros/s/AKfycbzaCJIlrnRpOR7kenIyiJxPGuzEHorZwYv9HHWitodKmSOQMh12EaDjMmeaQIDX4qzcLw/exec">
+            <div class="item">
+                <div class="electromagnetic">
+                    <div id="text-overlay">
+                        <h3 id="text-style">ไฟฟ้า</h3>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>       
+    <footer class="footer" id="font">
+      <a id="font" href="#">ข้อมูลติดต่อ</a>
+      <p>Copyright 2023</p>
+    </footer>
+  </body>
+</html>

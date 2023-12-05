@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {background-image: linear-gradient(0deg, rgba(158, 156, 156, 1) 0%, rgba(255, 255, 255, 1) 100%);
+      margin:0;
+      padding:0;
+      }
+      .menu-bar {
+        background-color: #D9D8D7;
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        position:fixed;
+        top:0;
+        right:0;
+        left:0;
+        font-family:Good Times;
+      }
+      .item {
+        color: black;
+        background-color: transparent;
+        font-size: 18px;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 8px 16px;
+        text-decoration:none;
+      }
+      .item.title {
+        font-weight: 600;
+        font-size:25px;
+      }
+      .search-input{
+        padding:6px;
+      }
+      .search-icon{
+        display:inline-block;
+        width:15px;
+        height:15px;
+      }
+      .search-text{
+        display:none;
+      }
+      @media screen and (min-width:500px){
+        .search-text{
+          display:inline-block;
+        }
+      }
+      .image{
+        width:100%;
+      }
+      .font{
+        font-family:Good Times;
+        text-decoration:none;
+        }
+      #main{
+        font-size:20px;
+        text-align:center;
+        background-image: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(219, 219, 219, 1) 100%);
+        width:1500px;
+        margin-bottom:20px;
+        padding:30px;
+        margin: auto;
+        max-width:2000;
+        border:0.5px solid #D9D8D7;
+        }
+      #pic-content{
+        display:grid;
+        column-gap:20px;
+        row-gap:20px;
+        max-width:300px;
+        margin:auto;
+        position: relative;
+      }
+      @media screen and (max-width:599px) {
+          #pic-content{
+            grid-template-columns:1fr 1fr ;
+          }
+      }
+      @media screen and (min-width:560px) and (max-width:919px){
+        #pic-content{
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
+      @media screen and (min-width:920px) and (max-width:1200px){
+        #pic-content{
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+        } 
+      }
+      @media screen and (min-width:1200px){
+        #pic-content{
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        } 
+      }
+      #text-overlay{
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.39) 20%, rgba(0, 0, 0, 0) 41%);
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+      #text-style{
+          color: white;
+          position: absolute;
+          left: 10px;
+          right: 10px;
+          bottom: 10px;
+      }
+      #content1{
+        background-color:lightblue;
+        padding:20px;
+        border:1px solid black;
+        }
+      #footer{
+        color:white;
+        background-color:#9E9C9C ;
+        width:1500px;
+        padding:20px;
+        margin: auto;
+        max-width:2000;
+        }
+    </style>
+    <title>รวมสูตรฟิสิกส์ ม.ปลาย</title>
+  </head>
+  
+
+  
+  
+  <body>
+    <header class="menu-bar">
+        <div class="group">
+          <a class="item title">Physics</a>
+         </div>
+         <div class="group">
+            <div class="item"> 
+                <input class="search-input" type ="search" >
+                <button class="search-input">
+                 <img class="search-icon" scr="https://drive.google.com/uc?id=1lzOn5AyfHDQhXz09Zxz9L4tGk1fmUPWwg">
+                 <span class="search-text">ค้นหาสูตร</span>
+                </button>
+            </div>
+          <a class="item" href="#">ม.4</a> 
+          <a class="item" href="#">ม.5</a>
+          <a class="item" href="#">ม.6</a>
+         </div>
+       </header>
+    <div id = "main" class="font">
+      <h1>Includes physics formulas for use in school or college entrance exams</h1>
+      <p>(รวมสูตรฟิสิกส์เพื่อใช้ในโรงเรียนหรือสอบเข้ามหาลัย)</p>
+    </div>
+    <div id="pic-content">
+        <div id="content1" class="font">
+          <img class="image" src="https://drive.google.com/uc?id=13FRZbR1DqIgrRzw1URv_MxtCAWqccH9W">
+          <div id="text-overlay">
+            <h2 id="text-style">test1</h2>
+            <a href="#">.</a>
+          </div>
+        </div>
+    <div id="pic-content">    
+        <div id="content1" class="font">
+          <img class="image" src="https://drive.google.com/uc?id=1ZIA2QxggU2xYkkRbv-ojQSLxmhN5vGol">
+          <div id="text-overlay">
+            <h2 id="text-style">test1</h2>
+            <a href="#">.</a>
+          </div>
+        </div>
+    </div>
+    <div id="pic-content">
+        <div id="content1" class="font">
+          <img class="image" src="https://drive.google.com/uc?id=13FRZbR1DqIgrRzw1URv_MxtCAWqccH9W">
+          <div id="text-overlay"> 
+            <h2 id="text-style">test3</h2>
+            <a href="#">.</a>
+          </div>
+        </div>
+      </div> 
+    </div>
+    <footer id="footer" class="font">
+      <a class="font" href="#">ข้อมูลติดต่อ</a>
+      <p>Copyright 2023</p>
+    </footer>
+  </body>
+</html>

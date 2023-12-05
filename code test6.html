@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {background-color:#fafafa ;
+      margin:0;
+      padding:0;
+      }
+      /*ใส่เงา*/
+      :root{
+        --shadow:0 6px 8px rgba(104,104,104,0.8);
+      }
+      .menu-bar {
+        background-color: #D9D8D7;
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        position:fixed;
+        top:0;
+        right:0;
+        left:0;
+        font-family:Good Times;
+      }
+      .item {
+        color: black;
+        background-color: transparent;
+        font-size: 18px;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 8px 16px;
+        text-decoration:none;
+      }
+      .item.title {
+        font-weight: 600;
+        font-size:25px;
+        margin-top:5px;
+      }
+      .search-input{
+        padding:6px;
+      }
+      .search-icon{
+        display:inline-block;
+        width:15px;
+        height:15px;
+      }
+      .search-text{
+        display:none;
+      }
+      <!--@media screen and (min-width:500px){
+        .search-text{
+          display:inline-block;
+        }
+      }
+      #font{
+        font-family:Good Times;
+        text-decoration:none;
+        }
+        /*หน้าหลัก*/
+      .top{
+        display:grid;
+        column-gap:10px;
+        grid-template-areas:'homepage homepage info-box1 info-box1';
+        margin-top:40px;
+      }
+      /*หน้าหลักรอง*/
+      .homepage{
+        grid-area:homepage;
+        min-height:500px;
+        background-image: url('https://www.ielts.idp.co.th/IdpBlog/StudyTips/image003.jpg');
+        background-position: left;
+        background-size:1200px 570px;
+        background-repeat: no-repeat;
+        padding:5px;
+        margin-top:20px;
+        margin-bottom:20px;
+        display:flex;
+        flex-direction:column;
+        align-items:start;
+        justify-content:flex-end;
+        box-shadow:var(--shadow);
+      }
+      .homepage h1{
+        font-size:35px;
+        color:white;
+        margin-bottom:0px;
+        margin-left:20px;
+      }
+      .homepage p{
+        font-size:20px;
+        color:white;
+        margin-top:10px;
+        margin-left:20px;
+      }
+      /*กล่องทางขวา*/
+      .info-box1{
+        grid-area:info-box1;
+        background-color:lightgray;
+        margin-top:20px;
+        margin-bottom:20px;
+        box-shadow:var(--shadow);
+        align-items:center;
+        justify-items:center;
+      }
+      .info-box1 ul{
+        list-style:none;
+        text-align:center;
+        padding:0px;
+        margin:1px;
+
+      }
+      .info-box1 li{
+        font-size:22px;
+        text-align:left;
+        line-height:24px;
+      }
+      .info-box1 a{
+        text-decoration:none;
+        display:block;
+        color:black;
+        padding-left:10px;
+        border-bottom:none;
+        transition:0.5s;
+      }
+      .info-box1 a:hover{
+        background-color:gray;
+      }
+      info-box1 li li{
+        font-size:20px;
+      }
+      
+      
+/*หน้าหลักเก่า*/
+      .main{
+        font-size:20px;
+        text-align:center;
+        background-color:white;
+        padding:40px;
+        margin: auto;
+        max-width:2000;
+        border:0.5px solid #D9D8D7;
+        }
+        /*ชื่อวิชา*/
+      .subject{
+        display:block;
+        margin-left:30px;
+        font-size:23px;
+      }
+      /*เนื้อหาหลัก*/
+      .grid{
+        display:grid;
+        column-gap: 15px;
+        row-gap: 15px;
+        margin: 15px;
+        position:relative;
+        justify-items:center;
+        align-items:center;
+      }  
+      @media screen and (max-width:599px) {/*phone*/
+        .grid{
+            grid-template-columns:1fr 1fr ;
+          }
+      }
+      @media screen and (min-width:560px) and (max-width:919px){/*ipad,phone*/
+        .grid{
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
+      @media screen and (min-width:920px) and (max-width:1200px){/*ipad*/
+        .grid{
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+        } 
+      }
+      @media screen and (min-width:1200px){/*pc*/
+        .grid{
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        } 
+      }
+      /*หล่องเนื้อหา*/
+      .content1{
+        background-color: white;
+        border-radius:10px;
+        box-sizing: border-box;
+        position:relative;
+        box-shadow:var(--shadow);
+        transition-property:transform;
+        transition-duration:0.3s;
+        transition-timing-function:ease-in;
+      }
+      .content1:hover{
+        transform:scale(1.05,1.05);
+      }
+      .image{
+        width:100%;
+        display: block;
+        border-radius:10px;
+      }
+      /*ใส่ตัวอักษรบนรูป*/
+      #text-overlay{
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.62) 24%, rgba(0, 0, 0, 0) 65%);
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius:10px;
+        transition-delay:2s;
+        transition-duration:2s;
+        transition-timing-function:ease-in;
+      }
+      #text-overlay:hover{
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.85) 21%, rgba(0, 0, 0, 0.53) 54%, rgba(0, 0, 0, 0) 80%);
+      }
+      #text-style{
+        color: white;
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+      }
+      .footer{
+        color:white;
+        background-color:#9E9C9C ;
+        width:1500px;
+        padding:20px;
+        margin: auto;
+        max-width:2000;
+        }
+    </style>
+    <title>รวมสูตรฟิสิกส์ ม.ปลาย</title>
+  </head>
+  
+
+  
+  
+  <body>
+      <header class="menu-bar">
+        <div class="group">
+          <a href="file:///C:/Users/Admin/Desktop/Com%20Project/code%20test6.html" class="item title">FORMULARS</a>
+         </div>
+         <div class="group">
+            <div class="item"> 
+                <input class="search-input" type ="search" >
+                <button class="search-input">
+                 <img class="search-icon" scr="https://drive.google.com/uc?id=1lzOn5AyfHDQhXz09Zxz9L4tGk1fmUPWwg">
+                 <span class="search-text">ค้นหาสูตร</span>
+                </button>
+            </div>
+          <a class="item" href="#">ม.4</a> 
+          <a class="item" href="#">ม.5</a>
+          <a class="item" href="#">ม.6</a>
+         </div>
+       </header>
+    <section class="top">
+      <header class="homepage">
+        <h1>Includes formulas for use in school or college entrance exams.</h1>
+        <p>(รวมสูตรเพื่อใช้ในโรงเรียนหรือสอบเข้ามหาลัย)</p>
+      </header>
+      <div class="info-box1">
+        <ul>
+          <li><a href="#">ข้อสอบPAT3</a>
+            <ul>
+              <li><a href="#">pat64</a></li>
+              <li><a href="#">pat63</a></li>
+              <li><a href="#">pat62</a></li>
+              <li><a href="#">pat61</a></li>
+              <li><a href="#">pat60</a></li>
+              <li><a href="#">pat59</a></li>
+              <li><a href="#">pat58</a></li>
+            </ul>
+          </li>
+             <li><a href="#">ข้อสอบ...</a>
+                <ul>
+                    <li><a href="#">pat64</a></li>
+                    <li><a href="#">pat63</a></li>
+                    <li><a href="#">pat62</a></li>
+                    <li><a href="#">pat61</a></li>
+                    <li><a href="#">pat60</a></li>
+                </ul>
+            </li>
+        </ul>   
+      </div>
+    </section>
+    <!--
+    <div class= "main" id ="font">
+      <h1>Includes formulas for use in school or college entrance exams</h1>
+      <p>(รวมสูตรเพื่อใช้ในโรงเรียนหรือสอบเข้ามหาลัย)</p>
+    </div>
+-->
+    <div class="subject" id="font">
+      <h3>physics</h3>
+    </div>
+    <div class="grid">
+      <a href="file:///C:/Users/Admin/Downloads/pj-mechanics.html" >
+        <div class="content1">
+          <img class="image" src="https://drive.google.com/uc?id=13FRZbR1DqIgrRzw1URv_MxtCAWqccH9W">
+          <div id="text-overlay">
+            <h3 id="text-style">กลศาสตร์</h3>
+          </div>
+        </div>
+      <a href="file:///C:/Users/Admin/Downloads/pj-wave.html">
+        <div class="content1">
+            <img class="image"src="https://drive.google.com/uc?id=1U2YB51_ZcZDsahADXf4e67nQq5GXDqz3">
+            <div id="text-overlay">
+             <h3 id="text-style">คลื่น</h3>
+          </div>
+        </div>
+      <a href="file:///C:/Users/Admin/Downloads/pj-%E0%B8%AA%E0%B8%AA%E0%B8%B2%E0%B8%A3.html" >
+        <div class="content1">
+            <img class="image"src="https://drive.google.com/uc?id=1h6cpUFSyOH-dik33-bGCal-NHD084Ep6">
+            <div id="text-overlay">
+              <h3 id="text-style">สสาร</h3>
+          </div>
+        </div>
+      <a href="file:///C:/Users/Admin/Downloads/pj-%E0%B8%AA%E0%B8%AA%E0%B8%B2%E0%B8%A3.html">
+        <div class="content1">
+            <img class="image"src="https://drive.google.com/uc?id=1hi3LyrB8EBCWS0FJfNisDrQIVMvc8fVd">
+            <div id="text-overlay">
+              <h3 id="text-style">ไฟฟ้า</h3>
+          </div>
+        </div>
+      <a href="#">
+        <div class="content1">
+            <img class="image"src="https://drive.google.com/uc?id=1PCwPJPHHmaEHlWgngJa5fwRzbXUYUxjR">
+            <div id="text-overlay">
+             <h3 id="text-style">นิวเคลียร์</h3>
+          </div>
+        </div>
+    </div> 
+    <footer class="footer" id="font">
+      <a id="font" href="#">ข้อมูลติดต่อ</a>
+      <p>Copyright 2023</p>
+    </footer>
+  </body>
+</html>
