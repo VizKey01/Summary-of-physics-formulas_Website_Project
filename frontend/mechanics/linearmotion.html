@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+      background-color:#fafafa ;
+      margin:0;
+      padding:0;
+      }
+      /*ใส่เงา*/
+      :root{
+        --shadow:0 6px 12px rgba(104,104,104,0.8);
+      }
+      .headerbar{
+        background-color:#D9D8D7;
+        height:53px;
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 3;
+      }
+      .menu-bar {
+        background-color: #D9D8D7;
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        position:fixed;
+        top:0;
+        right:0;
+        left:0;
+        font-family:Good Times;
+        z-index:3;
+        max-width: 1600px;
+        margin: auto;
+      }
+      .item {
+        color: black;
+        background-color: transparent;
+        font-size: 18px;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 8px 16px;
+        text-decoration:none;
+        margin:auto;
+      }
+      .item.title {
+        font-weight: 600;
+        font-size:25px;
+        margin-top:5px;
+      }
+      .search-input{
+        padding:6px;
+      }
+      .search-text{
+        display:none;
+      }
+      @media screen and (min-width:500px){
+        .search-text{
+          display:inline-block;
+        }
+      }
+      #font{
+        font-family:Good Times;
+        text-decoration:none;
+        }
+        .info-box1{
+        grid-area:info-box1;
+        background-color: #D9D8D7;
+        margin:auto;
+        align-items:center;
+        justify-items:center;
+        display:inline-block;
+        padding: 8px 16px;
+      }
+      .info-box1 ul{
+        list-style:none;
+        text-align:center;
+        padding:0px;
+        margin:1px;
+        background-color: #D9D8D7;
+      }
+      .info-box1 li{
+        font-size:20px;
+        text-align:left;
+        line-height:24px;
+      }
+      .info-box1 a{
+        text-decoration:none;
+        display:block;
+        color:black;
+        padding:5px 16px;
+        border-bottom:none;
+        transition:0.5s;
+        text-align:center;
+      }
+      .info-box1 a:hover{
+        background-color:gray;
+      }
+      .info-box1 li li{
+        font-size:15px;
+        text-align:center;
+        padding:0;
+        margin:0;
+        display:block;
+      }
+      @media screen and (min-width:650px){
+        .info-box1 il{
+          width:100px;
+          border-bottom:none;
+          height:50px;
+          line-height:50px;
+          display:inline-block;
+          margin-right:-8px;
+        }
+      } 
+      .info-box1 a{
+        border-bottom:none;
+      }
+      .info-box1 > ul> li{
+        text-align:center;
+      }
+      .info-box1 > ul > li > a{
+        padding-left:0;
+      }
+      .info-box1 li ul{
+        position:absolute;
+        display:none;
+        width:inherit;
+      }
+      .info-box1 li:hover ul{
+        display:block;
+      }
+      .info-box1 li ul li{
+        display:block;
+      }
+      .search-box{
+        width:150px;
+        background-color:white;
+        border-radius:20px;
+        display:flex;
+        align-items:center;
+        padding:0 15px;
+        display:inline-block;
+      }
+      .search-box input{
+        width:100%;
+        background:transparent;
+        outline:none;
+        border:0;
+        padding:10px;
+      }
+      .footer{
+        color:white;
+        background-color:#696969 ;
+        width:auto;
+        padding:70px 0;
+        box-sizing:border-box;
+        margin:auto;
+      }
+      .footer-container{
+        max-width:1200px;
+        background-color:red,none;
+        margin:auto;
+      }
+      ul{
+        list-style:none;
+        padding:6px;
+      }
+      .footer-row{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+      .footer-col{
+        width:22%;
+        padding:0 15px;
+      }
+      .footer-col h3{
+        font-size:20px;
+        color:white;
+        text-transform:capitatize;
+        margin-bottom:30px;
+        position:relative;
+      }
+      .footer-col h3::before{
+        content:'';
+        position:absolute;
+        left:0;
+        bottom:-10px;
+        background-color:white;
+        height:2px;
+        box-sizing:border-box;
+        width:110px;
+      }
+      .footer-col ul li:not(:last-child){
+        margin-bottom:10px;
+      }
+      .footer-col ul li a{
+        font-size:18px;
+        text-transform:capitalize;
+        color:lightgray;
+        text-decoration:none;
+        display:block;
+        transition:all 0.3s ease;
+      }
+      .footer-col ul li a:hover{
+        color:black;
+        padding-left:15px;
+      }
+      @media screen and (max-width:1000px){
+        .footer-col{
+          width:45%;
+          margin-bottom:30px;
+        }
+      }
+      @media screen and (max-width:580px){
+        .footer-col{
+          width:60%;
+          margin-bottom:30px;
+        }
+      }
+      .font2{
+        text-align:center;
+        color: white;
+      }
+      .main{
+        display: block;
+        min-height: 500px;
+        max-width: 1600px;
+        margin: auto;
+        background-color: white;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+      .sub-main{
+        display: grid;
+        justify-content: center;
+        z-index: 1;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr 2fr;
+        column-gap: 10px;
+        row-gap: 10px;
+        grid-template-areas: 'block-left block-right'
+                             'block-left block-right2';
+      }
+      .block-left{
+        display: flex;
+        background-color: white;
+        max-width: 1000px;
+        min-height: 200px;
+        margin-left: 20px;
+        margin-top: 20px;
+        width: 1000px;
+        padding: 20px;
+        grid-area: block-left;
+        flex-direction: column;
+
+      }
+      @media screen and (max-width:1000px){
+        .block-left{
+          width:40%;
+          margin-bottom:30px;
+        }
+      }
+      @media screen and (max-width:580px){
+        .block-left{
+          width:60%;
+          margin-bottom:30px;
+        }
+      }
+      @media screen and (max-width:1000px){
+        .block-right{
+          width:25%;
+          margin-bottom:30px;
+        }
+      }
+      @media screen and (max-width:580px){
+        .block-right{
+          width:40%;
+          margin-bottom:30px;
+        }
+      }
+      .block-right{
+        background-image :url("https://i.ytimg.com/vi/Zb_SizNRUPg/maxresdefault.jpg");
+        background-position: center;
+        background-size: 100%;
+        display: flex;
+        background-color: whitesmoke;
+        max-width: 600px;
+        max-height: 200px;
+        margin-right: 20px;
+        margin-top: 20px;
+        padding: 20px;
+        grid-area: block-right;
+      }
+      .block-right2 {
+        background-image :url("https://www.physio-pedia.com/images/2/25/Baseball_pitching_motion_2004.jpg");
+        display: flex;
+        background-color: whitesmoke;
+        max-width: 600px;
+        max-height: 200px;
+        margin-right: 20px;
+        margin-top: 20px;
+        width: 400px;
+        padding: 20px;
+        grid-area: block-right2;
+      }
+      @media screen and (max-width:1000px){
+        .block-right2{
+          width:25%;
+          margin-bottom:30px;
+        }
+      }
+      @media screen and (max-width:580px){
+        .block-right2{
+          width:40%;
+          margin-bottom:30px;
+        }
+      }
+      img{
+        display: flex;
+        max-height: 250px;
+        align-self: center;
+      }
+      #img {
+        display: flex;
+        width: 100px;
+        height: 60px;
+        align-self: center;
+      }
+      p {
+        color: black;
+        font-family: 'Good Times';
+        font-weight: 300;
+        font-size: 18px;
+      }
+
+    
+      </style>
+    <title>รวมสูตรฟิสิกส์ ม.ปลาย</title>
+  </head>
+  <body>
+      <div class="headerbar"> 
+        <div class="menu-bar">
+          <div class="group">
+            <a href="https://script.google.com/macros/s/AKfycbxiKXjENvXfZQ9VWSfI_6QWjmszxSOBRcxNvzBOeZIxJMMKvFVDoVscrCYhVISL1C_Aiw/exec" class="item title">FORMULARS</a>
+          </div>
+          <div class="group">
+              <div class="item"> 
+                <div class="search-box">
+                <input type="text" placeholder="ค้นหาสูตร">
+                </div>
+              </div> 
+            <div class="info-box1">
+              <ul>
+                <li><a href="#">ข้อสอบPAT3</a>
+                  <ul>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2564/">pat64</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2563/">pat63</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2562/">pat62</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2561/">pat61</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2560/">pat60</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2559/">pat59</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2558/">pat58</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="info-box1">
+              <ul>
+                <li><a href="#">ข้อสอบอื่นๆ</a>
+                  <ul>
+                    <li><a href="#">pat64</a></li>
+                    <li><a href="#">pat63</a></li>
+                    <li><a href="#">pat62</a></li>
+                    <li><a href="#">pat61</a></li>
+                    <li><a href="#">pat60</a></li>
+                    <li><a href="#">pat59</a></li>
+                    <li><a href="#">pat58</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main">
+        <div class="sub-main">
+          <div class="block-left">
+            <h2 style="color: midnightblue;text-shadow: darkblue;text-shadow: 1px 1px #696969;">การเคลื่อนที่ในแนวเส้นตรง</h2>
+            <h3 style="text-shadow: 1px 1px 1px plum;">ปริมาณการเคลื่อนที่</h3>
+            <p><text style="text-shadow: 1px 1px 1px springgreen;">การกระจัด (Displacement)</text> เป็นปริมาณเวกเตอร์ที่ลากจากจุดเริ่มต้น ไปยังจุดสุดท้ายของการเคลื่อนที่
+                ในช่วงที่พิจารณาแทนด้วยสัญลักษณ์ s มีหน่วยเป็นเมตร (m)</p>
+            <p><text style="text-shadow: 1px 1px 1px springgreen;">ระยะทาง (Distance)</text>คือความยาวตามเส้นทางของการเคลื่อนทีของวัตถุหรือคือระยะที่วัตถุเคลื่อนที่ได้
+                ทั้งหมดไปตามเส้นทางการเคลื่อนที่ระยะทางเป็นปริมาณสเกลาร์ที่เป็นบวก แทนด้วยตัว s มีหน่วยเป็น เมตร (m)</p>
+            <p><text style="text-shadow: 1px 1px 1px springgreen;">ความเร็ว (Velocity)</text> หมายถึงการกระจัดที่เกิดขึ้นในหนึ่งหน่วยเวลาความเร็วเป็นปริมาณเวกเตอร์แทนดว้ย v มีหน่วยเป็นเมตรต่อวินาที(m/s)ความเร็วมี2แบบ คือ<br>
+            <text style="margin-left: 30px;">1.ความเร็วเฉลี่ย คือ ความเร็วเฉลี่ยระหว่างช่วงเวลาหนึ่ง หรือคือการกระจัดที่วัดได้ในช่วงเวลาทั้งหมด</text><br>
+            <text style="margin-left: 30px;">2.ความเร็วขณะใดขณะหนึ่ง คือ ความเร็วขณะใดขณะนั้นนของวัตถุซึ่งอาจหาจากการกระจัดที่ได้ใน ช่วงเวลาสั้น ๆ</text></p>
+            <p><text style="text-shadow: 1px 1px 1px springgreen;">อัตราเร็ว (Speed)</text> คือระยะทางที่เคลื่อนที่ไปได้ในหนึ่งหน่วยเวลา หรืออาจพูดได้ว่าอัตราเร็วคือ
+                อัตราการเคลื่อนที่แทนด้วยสัญลักษณ์ v เป็นปริมาณสเกลาร์หน่วยเมตรต่อวินาที(m/s) มี2แบบ คือ<br>
+            <text style="margin-left: 30px;">1.อัตราเร็วเฉลี่ย เป็นปริมาณสเกลาร์บวกเสมอและนิยาม คือระยะทางที่
+                เคลื่อนที่ได้ทั้งหมดต่อเวลาที่ใช้ทั้งหมด</text><br>
+            <text style="margin-left: 30px;">2.อัตราเร็วขณะใดขณะหนึ่ง คือ อัตราเร็วขณะใดขณะหนึ่งของวัตถุ
+                หรืออาจพูดได้ว่าอตัราเร็วขณะใดก็คือขนาดของความเร็วขณะนั้น</text></p>
+            <img src="https://sites.google.com/site/sci30113b59/_/rsrc/1487235521548/student-work/room15/xatrarew-speed-laea-khwamrew-velocity-v/2.png?height=90&width=400">
+            <h3 style="text-shadow: 1px 1px #696969;">***5 สูตรการเคลื่อนที่***</h3>
+            <img src = "https://tuemaster.com/wp-content/uploads/2021/11/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%95%E0%B8%A3%E0%B8%87_3.jpg">
+            <h5 style="align-self: center;text-shadow: 1px 1px rgb(247, 150, 150);">(การเลือกใช้สูตรขึ้นอยู่กับตัวแปรที่โจทย์กำหนด)</h5>
+            <h3>การใช้ 5 สูตรการเคลื่อนที่</h3>
+            <p>1.กำหนดทิศทางด้วยเครื่องหมาย บวก,ลบ<br> 2.กำหนดให้ทิศของ u เป็นบวก<br>
+            3. t เป็นบวกเสมอ <br> 4. a ต้องคงที่</p>
+            <h3 style="text-shadow: 1px 1px 1px plum;">การตกอย่างเสรีภายใต้แรงโน้มถ่วง (Free falling object)/การเคลื่อนที่ในแนวดิ่ง</h3>
+            <p>การตกอย่างเสรี หรอืการตกอย่างอิสระ คือการเคลื่อนที่แบบเส้นตรงในแนวดิ่งของวัตถุ โดยมีแรงดึงดูดของโลกที่กระทำต่อวัตถุ a จะเปลี่ยนเป็นค่า g ซึ่งมีค่า = 9.8 หรือ 10 m/s<sup>2</sup> และจะมีทิศลงเสมอ </p>
+            <img src="http://4.bp.blogspot.com/-1fy8VPtqXSo/T7tCfhBYuLI/AAAAAAAAAEA/d8IDt116UCU/s1600/g.JPG">
+            <h5 style="align-self: center;text-shadow: 1px 1px rgb(247, 150, 150);">(การเลือกใช้สูตรและเครื่องหมายขึ้นอยู่กับตัวแปรที่โจทย์กำหนด)</h5>
+            <h3>การฟของการเคลื่อนที่ระหว่ง S กับ t</h3>
+            <img src="https://drive.google.com/uc?id=12OQ_FSUBOpkQ7j0LtKTQZPqe_dWPB16z">
+          </div>
+           <div class="block-right">
+          </div>
+          <div class="block-right2">
+          </div>
+        </div>
+      </div>
+       <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-row">
+          <div class="footer-col">
+            <h3>เกี่ยวกับเรา</h3>
+            <ul>
+              <li><a href="#">การทำงาน</a></li>
+              <li><a href="#">ประวัติ</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>ข้อมูลติดต่อ</h3>
+            <ul>
+              <li><p1>เบอร์โทรศัพท์ : 092-446-8583 </p1></li>
+              <li><p1>email : micmin0101@gmail.com</p1></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>เเหล่งที่มา</h3>
+            <ul>
+              <li><a href="#">รูปภาพ</a></li>
+              <li><a href="#">เนื้อหา</a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Social Media</h3>
+            <ul>
+              <li><a href="#">Instragram</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">line</a></li>
+            </ul>
+          </div>
+            
+        </div>
+      </div>
+      <p class="font2">@Copyright 2023</p>
+    </footer>
+  </body>
+</html>

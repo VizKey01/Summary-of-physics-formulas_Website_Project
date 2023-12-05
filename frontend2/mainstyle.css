@@ -1,0 +1,51 @@
+body {background-color:#FBFAF9;
+      margin:0;
+      padding:0;
+      }
+      .image{width:100%;}
+      .font{
+        font-family:Good Times;
+        text-decoration:none;
+        }
+      #header{
+        background-color:#D9D8D7 ;
+        width:1500px;
+        padding:10px;
+        position:fixed;
+        }
+      #header-menu-brand{
+        font-size:25px;
+        font-weight:700px;
+      }
+      #header-menu{
+        color:black;
+        display:inline-block;
+        text-decoration:none;
+        float:right;
+      }
+      #main{
+        font-size:20px;
+        text-align:center;
+        background-color:#F4F4F4;
+        width:1500px;
+        height:500px;
+        margin-bottom:20px;
+        padding:30px;
+        }
+      #pic-content{
+        max-width:300px;
+        margin:auto;
+      }
+      #content1{
+        background-color:lightblue;
+        margin:30px;
+        padding:20px;
+        border:1px solid black;
+        }
+      #footer{
+        color:white;
+        background-color:#9E9C9C ;
+        width:1500px;
+        height:500px;
+        padding:20px;
+        }

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+      background-color:#fafafa ;
+      margin:0;
+      padding:0;
+      }
+      /*ใส่เงา*/
+      :root{
+        --shadow:0 6px 12px rgba(104,104,104,0.8);
+      }
+      .headerbar{
+        background-color:#D9D8D7;
+        height:53px;
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 3;
+      }
+      .menu-bar {
+        background-color: #D9D8D7;
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        position:fixed;
+        top:0;
+        right:0;
+        left:0;
+        font-family:Good Times;
+        z-index:3;
+        max-width: 1600px;
+        margin: auto;
+      }
+      .item {
+        color: black;
+        background-color: transparent;
+        font-size: 18px;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 8px 16px;
+        text-decoration:none;
+        font-family:Good Times;
+      }
+      .item.title {
+        font-weight: 600;
+        font-size:25px;
+      }
+      .search-input{
+        padding:6px;
+      }
+      .search-icon{
+        display:inline-block;
+        width:15px;
+        height:15px;
+      }
+      .search-text{
+        display:none;
+      }
+      @media screen and (min-width:500px){
+        .search-text{
+          display:inline-block;
+        }
+      }
+      .font{
+        font-family:Good Times;
+        text-decoration:none;
+        }
+      #main{
+        font-size:20px;
+        text-align:center;
+        background-image: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(219, 219, 219, 1) 100%);
+        margin-bottom:20px;
+        padding:30px;
+        margin: auto;
+        max-width:1600px;
+        border:0.5px solid #D9D8D7;
+        }
+     
+      #text-overlay{
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.62) 24%, rgba(0, 0, 0, 0) 65%);
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius:10px;
+        transition-delay:2s;
+        transition-duration:2s;
+        transition-timing-function:ease-in;
+      }
+      #text-overlay:hover{
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.85) 21%, rgba(0, 0, 0, 0.53) 54%, rgba(0, 0, 0, 0) 80%);
+      }
+      #text-style{
+        color: white;
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+      }
+      .footer{
+        color:white;
+        background-color:#696969 ;
+        width:auto;
+        padding:70px 0;
+        box-sizing:border-box;
+        margin:auto;
+      }
+      .footer-container{
+        max-width:1200px;
+        background-color:red,none;
+        margin:auto;
+      }
+      ul{
+        list-style:none;
+        padding:6px;
+      }
+      .footer-row{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+      .footer-col{
+        width:22%;
+        padding:0 15px;
+      }
+      .footer-col h3{
+        font-size:20px;
+        color:white;
+        text-transform:capitatize;
+        margin-bottom:30px;
+        position:relative;
+      }
+      .footer-col h3::before{
+        content:'';
+        position:absolute;
+        left:0;
+        bottom:-10px;
+        background-color:white;
+        height:2px;
+        box-sizing:border-box;
+        width:110px;
+      }
+      .footer-col ul li:not(:last-child){
+        margin-bottom:10px;
+      }
+      .footer-col ul li a{
+        font-size:18px;
+        text-transform:capitalize;
+        color:lightgray;
+        text-decoration:none;
+        display:block;
+        transition:all 0.3s ease;
+      }
+      .footer-col ul li a:hover{
+        color:black;
+        padding-left:15px;
+      }
+      @media screen and (max-width:1000px){
+        .footer-col{
+          width:45%;
+          margin-bottom:30px;
+        }
+      }
+      @media screen and (max-width:580px){
+        .footer-col{
+          width:60%;
+          margin-bottom:30px;
+        }
+      }
+      .font2{
+        text-align:center;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr ;
+        justify-items: center;
+        align-items: stretch;
+        position:relative;
+        border-radius:10px;
+        min-height: 500px;
+        max-width: fit-content;
+        margin: auto;
+      }
+      .subject {
+        display: block;
+        max-width: fit-content;
+        margin: auto;
+      }
+      @media screen and (max-width:599px) {
+          .grid{
+            grid-template-columns:1fr  ;
+          }
+      }
+      @media screen and (min-width:600px) and (max-width:1000px){
+        .grid{
+          grid-template-columns: 1fr 1fr ;
+        }
+      }
+      @media screen and (min-width:1001px) and (max-width:1400px){
+        .grid{
+          grid-template-columns: 1fr 1fr 1fr ;
+        } 
+      }
+      @media screen and (min-width:1401px){
+        .grid{
+          grid-template-columns: 1fr 1fr 1fr 1fr ;
+        } 
+      }
+      .info-box1{
+        grid-area:info-box1;
+        background-color: #D9D8D7;
+        margin:auto;
+        align-items:center;
+        justify-items:center;
+        display:inline-block;
+        padding: 8px 16px;
+      }
+      .info-box1 ul{
+        list-style:none;
+        text-align:center;
+        padding:0px;
+        margin:1px;
+        background-color: #D9D8D7;
+      }
+      .info-box1 li{
+        font-size:20px;
+        text-align:left;
+        line-height:24px;
+      }
+      .info-box1 a{
+        text-decoration:none;
+        display:block;
+        color:black;
+        padding:5px 16px;
+        border-bottom:none;
+        transition:0.5s;
+        text-align:center;
+      }
+      .info-box1 a:hover{
+        background-color:gray;
+      }
+      .info-box1 li li{
+        font-size:20px;
+        text-align:center;
+        padding:0;
+        margin:0;
+        display:block;
+      }
+      @media screen and (min-width:650px){
+        .info-box1 il{
+          width:100px;
+          border-bottom:none;
+          height:50px;
+          line-height:50px;
+          display:inline-block;
+          margin-right:-8px;
+        }
+      } 
+      .info-box1 a{
+        border-bottom:none;
+      }
+      .info-box1 > ul> li{
+        text-align:center;
+      }
+      .info-box1 > ul > li > a{
+        padding-left:0;
+      }
+      .info-box1 li ul{
+        position:absolute;
+        display:none;
+        width:inherit;
+      }
+      .info-box1 li:hover ul{
+        display:block;
+      }
+      .info-box1 li ul li{
+        display:block;
+      }
+      .search-box{
+        width:150px;
+        background-color:white;
+        border-radius:20px;
+        display:flex;
+        align-items:center;
+        padding:0 15px;
+        display:inline-block;
+      }
+      .search-box input{
+        width:100%;
+        background:transparent;
+        outline:none;
+        border:0;
+        padding:10px;
+      }
+      .motion {
+        position:relative;
+        background-image:url("https://studiousguy.com/wp-content/uploads/2020/10/Motion.jpg");
+        background-color: #666666;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width:350px;
+        height:250px;
+        border-radius:10px;
+        box-shadow:var(--shadow);
+        transition-property:transform;
+        transition-duration:0.3s;
+        transition-timing-function:ease-in;
+      }
+      .motion:hover{
+        transform:scale(1.05,1.05);
+      }
+      .projectile {
+        background-image:url("https://studiousguy.com/wp-content/uploads/2021/05/Throwing-a-Basketball-in-the-Basket-.jpg");
+        background-color: #666666;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width:350px;
+        height:250px;
+        position:relative; 
+        border-radius:10px;
+        box-shadow:var(--shadow);
+        transition-property:transform;
+        transition-duration:0.3s;
+        transition-timing-function:ease-in;      
+      }
+      .projectile:hover{
+        transform:scale(1.05,1.05);
+      }
+      .newton {
+        background-image:url("https://s.yimg.com/ny/api/res/1.2/97Ck8QPJEngGLWRzYQEe0A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTQyMDtoPTMxNg--/https://s.yimg.com/os/en/blogs/thesideshow/fallingapples.jpg");
+        background-color: #666666;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width:350px;
+        height:250px;
+        position:relative;
+        border-radius:10px;
+        box-shadow:var(--shadow);
+        transition-property:transform;
+        transition-duration:0.3s;
+        transition-timing-function:ease-in;
+      }
+      .newton:hover{
+        transform:scale(1.05,1.05);
+      }
+      .rotate {
+        background-image:url("https://5.imimg.com/data5/VW/RL/QZ/SELLER-2905410/kids-seesaw-500x500.jpg");
+        background-color: #666666;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width:350px;
+        height:250px;
+        position:relative;
+        border-radius:10px;
+        box-shadow:var(--shadow);
+        transition-property:transform;
+        transition-duration:0.3s;
+        transition-timing-function:ease-in;
+      }
+      .rotate:hover{
+        transform:scale(1.05,1.05);
+      }
+      .circle {
+        background-image:url("https://2.bp.blogspot.com/-OU_nopr_1z8/V8BVHMwvAqI/AAAAAAAABPM/YyYtZTYV4OILbG08v4hvonxnMoMt-h3ZQCLcB/s1600/color-ferris-wheel.jpg");
+        background-color: #666666;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width:350px;
+        height:250px;
+        position:relative;
+        border-radius:10px;
+        box-shadow:var(--shadow);
+        transition-property:transform;
+        transition-duration:0.3s;
+        transition-timing-function:ease-in;
+      }
+      .circle:hover{
+        transform:scale(1.05,1.05);
+      }
+      #topten{
+        color: white;
+        font-family:Good Times;
+        text-decoration:none;
+        position: absolute;
+        bottom:8px;
+        left:16px;
+      }
+      .momentum {
+        background-image:url("http://thejourneyofphysicsforsamir.weebly.com/uploads/4/7/2/3/47237451/6560914_orig.jpg");
+        background-color: #666666;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width:350px;
+        height:250px;
+        position:relative;
+        border-radius:10px;
+        box-shadow:var(--shadow);
+        transition-property:transform;
+        transition-duration:0.3s;
+        transition-timing-function:ease-in;
+      }
+      .momentum:hover{
+        transform:scale(1.05,1.05);
+      }
+      .shm {
+        background-image:url("https://helentronica.files.wordpress.com/2014/12/bull-dog-in-a-swing1.jpg");
+        background-color: #666666;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width:350px;
+        height:250px;
+        position:relative;
+        border-radius:10px;
+        box-shadow:var(--shadow);
+        transition-property:transform;
+        transition-duration:0.3s;
+        transition-timing-function:ease-in;
+      }
+      .shm:hover{
+        transform:scale(1.05,1.05);
+      }
+      .wande {
+        background-image:url("https://media.istockphoto.com/photos/young-adult-woman-walking-up-the-stairs-with-sun-sport-background-picture-id874231466?k=20&m=874231466&s=170667a&w=0&h=nB8nYUfuZLMHsB1CeI-l6itgB4HDqm7ro2GDX6Ai58A=");
+        background-color: #666666;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width:350px;
+        height:250px;
+        position:relative;
+        border-radius:10px;
+        box-shadow:var(--shadow);
+        transition-property:transform;
+        transition-duration:0.3s;
+        transition-timing-function:ease-in;
+      }
+      .wande:hover{
+        transform:scale(1.05,1.05);
+      }
+      .Rotation {
+        background-image:url("http://mateeya-physicseducation.weebly.com/uploads/2/6/6/0/26603561/1393786445.jpg");
+        background-color: #666666;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width:350px;
+        height:250px;
+        position:relative;
+        border-radius:10px;
+        box-shadow:var(--shadow);
+        transition-property:transform;
+        transition-duration:0.3s;
+        transition-timing-function:ease-in;
+      }
+      .Rotation:hover{
+        transform:scale(1.05,1.05);
+      }
+      .meter {
+        background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAVYL6jZS03_7lNmjJ6gTPMQ8ZHk_ocOtebPVcgda8FPKCWHlZV_UtjXLD0tPEdf8pMBA&usqp=CAU");
+        background-color: #666666;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width:350px;
+        height:250px;
+        position:relative;
+        border-radius:10px;
+        box-shadow:var(--shadow);
+        transition-property:transform;
+        transition-duration:0.3s;
+        transition-timing-function:ease-in;
+      }
+      .meter:hover{
+        transform:scale(1.05,1.05);
+      } 
+      .search-box{
+        width:150px;
+        background-color:white;
+        border-radius:20px;
+        display:flex;
+        align-items:center;
+        padding:0 15px;
+        display:inline-block;
+      }
+    </style>
+    <title>รวมสูตรฟิสิกส์ ม.ปลาย</title>
+  </head>
+ 
+  <body>
+    <div class="headerbar"> 
+        <div class="menu-bar">
+          <div class="group">
+            <a href="https://script.google.com/macros/s/AKfycbxiKXjENvXfZQ9VWSfI_6QWjmszxSOBRcxNvzBOeZIxJMMKvFVDoVscrCYhVISL1C_Aiw/exec" class="item title">FORMULARS</a>
+          </div>
+          <div class="group">
+              <div class="item"> 
+                <div class="search-box">
+                <input type="text" placeholder="ค้นหาสูตร">
+                </div>
+              </div> 
+            <div class="info-box1">
+              <ul>
+                <li><a href="#">ข้อสอบPAT3</a>
+                  <ul>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2564/">pat64</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2563/">pat63</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2562/">pat62</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2561/">pat61</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2560/">pat60</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2559/">pat59</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2558/">pat58</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="info-box1">
+              <ul>
+                <li><a href="#">ข้อสอบอื่นๆ</a>
+                  <ul>
+                    <li><a href="#">pat64</a></li>
+                    <li><a href="#">pat63</a></li>
+                    <li><a href="#">pat62</a></li>
+                    <li><a href="#">pat61</a></li>
+                    <li><a href="#">pat60</a></li>
+                    <li><a href="#">pat59</a></li>
+                    <li><a href="#">pat58</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div id = "main" class="font">
+      <h1>กลศาสตร์</h1>
+      <p>(รวมสูตรฟิสิกส์เพื่อใช้ในโรงเรียนหรือสอบเข้ามหาลัย)</p>
+    </div>
+    <div class="subject">
+      <div class="grid">
+        <a href="https://script.google.com/macros/s/AKfycbznOIZx1Rx7OfFO1TfWpouKK-t8xyj00By-pV1mhVMEkGaKMEsXSK4arJq74G9VyAs7Gw/exec"><div class="item">
+          <div class="meter">
+            <div id="text-overlay">
+              <h3 id="text-style">การวัด</h3>
+           </div>
+          </div>
+        </div></a>
+        <a href="https://script.google.com/macros/s/AKfycbwRMG3bNVeZra28aWly2-YPD_IhRImPCPRqN9GrYiGusb1YpVR4jdm2OHFVlBFWVgbgWQ/exec"><div class="item">
+          <div class="motion">
+            <div id="text-overlay">
+              <h3 id="text-style">การเคลื่อนที่เเนวตรง</h3>
+           </div>
+          </div>
+        </div></a>
+        <a href="https://script.google.com/macros/s/AKfycbwkudtV6XCNgIBSrXKEd2c9uQO4DOAloUVEUTVxaEwRPnqZkv-O9pdcYYZAzEMY2xDYbw/exec"><div class="item">
+          <div class="projectile">
+            <div id="text-overlay">
+              <h3 id="text-style">โพรเจกไทด์</h3>
+           </div>
+          </div>
+        </div></a>
+        <a href="https://script.google.com/macros/s/AKfycbzBm6aGchrl1Ul2CVBDoSbYz0MVlBGqOdlpsmaRU2KY7c7VmIJNS_4G3AQ_gNlYf-0H/exec"><div class="item">
+          <div class="newton">
+            <div id="text-overlay">
+              <h3 id="text-style">แรง มวลและกฎของการเคลื่อนที่</h3>
+           </div>
+          </div>
+        </div></a>
+        <a href="https://script.google.com/macros/s/AKfycbzLWzL02weLjjvsN-t2wvQZe8Qb73AX0bwugfPvIhqfJAvljZaxmZN6od97B-YLFLvt/exec"><div class="item">
+          <div class="rotate">
+            <div id="text-overlay">
+              <h3 id="text-style">สมดุลกล</h3>
+           </div>
+          </div>
+        </div></a>
+        <a href="https://script.google.com/macros/s/AKfycbyF_KVRahgUCz4nd17DPnxktqKM9Lg-yiMdrg1NZLr4uGWXpHcPY8Fvqz4qpR87bNY3hQ/exec"><div class="item">
+          <div class="circle">
+            <div id="text-overlay">
+              <h3 id="text-style">การเคลื่อนที่แบบวงกลม</h3>
+           </div>
+          </div>
+        </div></a>
+        <a href="https://script.google.com/macros/s/AKfycbwyXTwLIMWX5mHKfnfoUaTFeTlkfTvlfEk_qJ-k_ruy8PmhlXTErSCE67MjeQ3JX-vnzA/exec"><div class="item">
+          <div class="momentum">
+            <div id="text-overlay">
+              <h3 id="text-style">โมเมนตัม</h3>
+           </div>
+          </div>
+        </div></a>
+        <a href="https://script.google.com/macros/s/AKfycbyfipn7p3HMQMPh8r7jvnS5ZvwXzWv9M-lAQ_CRnIRM9NepZqijmiyDJj90pL9k9wPY/exec"><div class="item">
+          <div class="shm">
+            <div id="text-overlay">
+              <h3 id="text-style">การเคลื่อนที่แบบมีคาบ</h3>
+           </div>
+          </div>
+        </div></a>
+        <a href="https://script.google.com/macros/s/AKfycbw6V1sZCqyF_Jx3TzStKxLqY1RnCWiHVMGNY9yOYYC3pLzO1i6CfHK62kPL-HHmNynV/exec"><div class="item">
+          <div class="Rotation">
+            <div id="text-overlay">
+              <h3 id="text-style">การเคลื่อนที่เเบบหมุน</h3>
+           </div>
+          </div>
+        </div></a>
+        <a href="https://script.google.com/macros/s/AKfycbw79o8G3x5oKz773dLdm2c_GRVIGdL_3hJ92-GBnlZdnb7KIhq00vAASATdldxea6RvCA/exec"><div class="item">
+          <div class="wande">
+            <div id="text-overlay">
+              <h3 id="text-style">งานและพลังงาน</h3>
+           </div>
+          </div>
+        </div></a>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-row">
+          <div class="footer-col">
+            <h3>เกี่ยวกับเรา</h3>
+            <ul>
+              <li><a href="#">การทำงาน</a></li>
+              <li><a href="#">ประวัติ</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>ข้อมูลติดต่อ</h3>
+            <ul>
+              <li><p>เบอร์โทรศัพท์ : 092-446-8583 </p></li>
+              <li><p>email : micmin0101@gmail.com</p></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>เเหล่งที่มา</h3>
+            <ul>
+              <li><a href="#">รูปภาพ</a></li>
+              <li><a href="#">เนื้อหา</a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Social Media</h3>
+            <ul>
+              <li><a href="#">Instragram</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">line</a></li>
+            </ul>
+          </div>
+            
+        </div>
+      </div>
+      <p class="font2">@Copyright 2023</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+      background-color:#fafafa ;
+      margin:0;
+      padding:0;
+      }
+      /*ใส่เงา*/
+      :root{
+        --shadow:0 6px 12px rgba(104,104,104,0.8);
+      }
+      .headerbar{
+        background-color:#D9D8D7;
+        height:53px;
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 3;
+      }
+      .menu-bar {
+        background-color: #D9D8D7;
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        position:fixed;
+        top:0;
+        right:0;
+        left:0;
+        font-family:Good Times;
+        z-index:3;
+        max-width: 1600px;
+        margin: auto;
+      }
+      .item {
+        color: black;
+        background-color: transparent;
+        font-size: 18px;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 8px 16px;
+        text-decoration:none;
+        margin:auto;
+      }
+      .item.title {
+        font-weight: 600;
+        font-size:25px;
+        margin-top:5px;
+      }
+      .search-input{
+        padding:6px;
+      }
+      .search-text{
+        display:none;
+      }
+      @media screen and (min-width:500px){
+        .search-text{
+          display:inline-block;
+        }
+      }
+      #font{
+        font-family:Good Times;
+        text-decoration:none;
+        }
+        .info-box1{
+        grid-area:info-box1;
+        background-color: #D9D8D7;
+        margin:auto;
+        align-items:center;
+        justify-items:center;
+        display:inline-block;
+        padding: 8px 16px;
+      }
+      .info-box1 ul{
+        list-style:none;
+        text-align:center;
+        padding:0px;
+        margin:1px;
+        background-color: #D9D8D7;
+      }
+      .info-box1 li{
+        font-size:20px;
+        text-align:left;
+        line-height:24px;
+      }
+      .info-box1 a{
+        text-decoration:none;
+        display:block;
+        color:black;
+        padding:5px 16px;
+        border-bottom:none;
+        transition:0.5s;
+        text-align:center;
+      }
+      .info-box1 a:hover{
+        background-color:gray;
+      }
+      .info-box1 li li{
+        font-size:15px;
+        text-align:center;
+        padding:0;
+        margin:0;
+        display:block;
+      }
+      @media screen and (min-width:650px){
+        .info-box1 il{
+          width:100px;
+          border-bottom:none;
+          height:50px;
+          line-height:50px;
+          display:inline-block;
+          margin-right:-8px;
+        }
+      } 
+      .info-box1 a{
+        border-bottom:none;
+      }
+      .info-box1 > ul> li{
+        text-align:center;
+      }
+      .info-box1 > ul > li > a{
+        padding-left:0;
+      }
+      .info-box1 li ul{
+        position:absolute;
+        display:none;
+        width:inherit;
+      }
+      .info-box1 li:hover ul{
+        display:block;
+      }
+      .info-box1 li ul li{
+        display:block;
+      }
+      .search-box{
+        width:150px;
+        background-color:white;
+        border-radius:20px;
+        display:flex;
+        align-items:center;
+        padding:0 15px;
+        display:inline-block;
+      }
+      .search-box input{
+        width:100%;
+        background:transparent;
+        outline:none;
+        border:0;
+        padding:10px;
+      }
+      .footer{
+        color:white;
+        background-color:#696969 ;
+        width:auto;
+        padding:70px 0;
+        box-sizing:border-box;
+        margin:auto;
+      }
+      .footer-container{
+        max-width:1200px;
+        background-color:red,none;
+        margin:auto;
+      }
+      ul{
+        list-style:none;
+        padding:6px;
+      }
+      .footer-row{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+      .footer-col{
+        width:22%;
+        padding:0 15px;
+      }
+      .footer-col h3{
+        font-size:20px;
+        color:white;
+        text-transform:capitatize;
+        margin-bottom:30px;
+        position:relative;
+      }
+      .footer-col h3::before{
+        content:'';
+        position:absolute;
+        left:0;
+        bottom:-10px;
+        background-color:white;
+        height:2px;
+        box-sizing:border-box;
+        width:110px;
+      }
+      .footer-col ul li:not(:last-child){
+        margin-bottom:10px;
+      }
+      .footer-col ul li a{
+        font-size:18px;
+        text-transform:capitalize;
+        color:lightgray;
+        text-decoration:none;
+        display:block;
+        transition:all 0.3s ease;
+      }
+      .footer-col ul li a:hover{
+        color:black;
+        padding-left:15px;
+      }
+      @media screen and (max-width:1000px){
+        .footer-col{
+          width:45%;
+          margin-bottom:30px;
+        }
+      }
+      @media screen and (max-width:580px){
+        .footer-col{
+          width:60%;
+          margin-bottom:30px;
+        }
+      }
+      .font2{
+        text-align:center;
+        color: white;
+      }
+      .main{
+        display: block;
+        min-height: 500px;
+        max-width: 1600px;
+        margin: auto;
+        background-color: white;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+      .sub-main{
+        display: grid;
+        justify-content: center;
+        z-index: 1;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr 2fr;
+        column-gap: 10px;
+        row-gap: 10px;
+        grid-template-areas: 'block-left block-right'
+                             'block-left block-right2';
+      }
+      .block-left{
+        display: flex;
+        background-color: white;
+        max-width: 1000px;
+        min-height: 200px;
+        margin-left: 20px;
+        margin-top: 20px;
+        width: 1000px;
+        padding: 20px;
+        grid-area: block-left;
+        flex-direction: column;
+
+      }
+      @media screen and (max-width:1000px){
+        .block-left{
+          width:60%;
+          margin-bottom:30px;
+        }
+      }
+      @media screen and (max-width:580px){
+        .block-left{
+          width:80%;
+          margin-bottom:30px;
+        }
+      }
+      @media screen and (max-width:1000px){
+        .block-right{
+          width:25%;
+          margin-bottom:30px;
+        }
+      }
+      @media screen and (max-width:580px){
+        .block-right{
+          width:40%;
+          margin-bottom:30px;
+        }
+      }
+      .block-right{
+        background-position: center;
+        background-size: 100%;
+        display: flex;
+        background-color: whitesmoke;
+        max-width: 600px;
+        max-height: 200px;
+        margin-right: 20px;
+        margin-top: 20px;
+        padding: 20px;
+        grid-area: block-right;
+      }
+      .block-right2 {
+        background-image :url("https://images.unsplash.com/photo-1552862750-746b8f6f7f25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80");
+        display: flex;
+        background-color: whitesmoke;
+        max-width: 600px;
+        margin-right: 20px;
+        margin-top: 20px;
+        padding: 20px;
+        grid-area: block-right2;
+      }
+      @media screen and (max-width:1000px){
+        .block-right2{
+          width:25%;
+          margin-bottom:30px;
+        }
+      }
+      @media screen and (max-width:580px){
+        .block-right2{
+          width:20%;
+          margin-bottom:30px;
+        }
+      }
+      img{
+        display: flex;
+        max-height: 250px;
+        align-self: center;
+      }
+      #img {
+        display: flex;
+        width: 100px;
+        height: 60px;
+        align-self: center;
+      }
+      p {
+        color: black;
+        font-family: 'Good Times';
+        font-weight: 300;
+        font-size: 18px;
+      }
+
+    
+      </style>
+    <title>รวมสูตรฟิสิกส์ ม.ปลาย</title>
+  </head>
+  <body>
+      <div class="headerbar"> 
+        <div class="menu-bar">
+          <div class="group">
+            <a href="https://script.google.com/macros/s/AKfycbxiKXjENvXfZQ9VWSfI_6QWjmszxSOBRcxNvzBOeZIxJMMKvFVDoVscrCYhVISL1C_Aiw/exec" class="item title">FORMULARS</a>
+          </div>
+          <div class="group">
+              <div class="item"> 
+                <div class="search-box">
+                <input type="text" placeholder="ค้นหาสูตร">
+                </div>
+              </div> 
+            <div class="info-box1">
+              <ul>
+                <li><a href="#">ข้อสอบPAT3</a>
+                  <ul>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2564/">pat64</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2563/">pat63</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2562/">pat62</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2561/">pat61</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2560/">pat60</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2559/">pat59</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2558/">pat58</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="info-box1">
+              <ul>
+                <li><a href="#">ข้อสอบอื่นๆ</a>
+                  <ul>
+                    <li><a href="#">pat64</a></li>
+                    <li><a href="#">pat63</a></li>
+                    <li><a href="#">pat62</a></li>
+                    <li><a href="#">pat61</a></li>
+                    <li><a href="#">pat60</a></li>
+                    <li><a href="#">pat59</a></li>
+                    <li><a href="#">pat58</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main">
+        <div class="sub-main">
+          <div class="block-left">
+            <h2 style="color: midnightblue;text-shadow: darkblue;text-shadow: 1px 1px #696969;">การเคลื่อนที่แบบหมุน</h2>
+            <h3 style="text-shadow: 1px 1px 1px plum;">ปริมาณการเคลื่อนที่แบบหมุน</h3>
+            <p>แสงเป็นคลื่นแม่เหล็กไฟฟ้า มีความเร็วสูญญากาศ (c) = 3 x 10<sup>8</sup></p>
+            <h3 style="text-shadow: 1px 1px 1px plum;">สมการการคำนวณ</h3>
+            <img src="https://panyasociety.com/pages/wp-content/uploads/2020/10/%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B9%81%E0%B8%AA%E0%B8%87_%E0%B8%AB%E0%B8%B1%E0%B8%81%E0%B9%80%E0%B8%AB.jpg">
+            <img src="https://panyasociety.com/pages/wp-content/uploads/2020/10/%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B9%81%E0%B8%AA%E0%B8%87_%E0%B8%AB%E0%B8%B1%E0%B8%81%E0%B9%80%E0%B8%AB2.jpg">
+            <img src="https://panyasociety.com/pages/wp-content/uploads/2020/10/%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B9%81%E0%B8%AA%E0%B8%87_%E0%B8%AB%E0%B8%B1%E0%B8%81%E0%B9%80%E0%B8%AB3.jpg">
+            <img src="https://panyasociety.com/pages/wp-content/uploads/2020/10/%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B9%81%E0%B8%AA%E0%B8%87_%E0%B8%A5%E0%B8%B6%E0%B8%81%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87.jpg">
+            <h3 style="text-shadow: 1px 1px 1px plum;">การหาความสว่าง</h3>
+            <p>F = 4πI</p>
+            <img src="https://panyasociety.com/pages/wp-content/uploads/2020/10/%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B9%81%E0%B8%AA%E0%B8%87_%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%AA%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%87.jpg">
+            <h4 style = "align-self: center;text-shadow: 1px 1px #696969;">ส่วนทฤษฎี</h4>
+            <h3 style="text-shadow: 1px 1px 1px plum;">การเกิดเงามืด,เงามัว</h3>
+            <img src="https://drive.google.com/uc?id=1lzuw1kFtqHeCk6vilpRDMNLrAGGIGq2b">
+            <h3 style="text-shadow: 1px 1px 1px plum;">กฎการสะท้อน</h3>
+            <img src="https://sites.google.com/site/lamaiyodpho/_/rsrc/1348909587810/bth-thi-2-saeng/3-smbati-khxng-saeng-cheing-rekhakhnit/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%B0%E0%B8%97%E0%B9%89%E0%B8%AD%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%9C%E0%B8%B4%E0%B8%A7%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%9A.png">
+            <h3 style="text-shadow: 1px 1px 1px plum;">กระจกเงาราบ</h3>
+            <img src="https://lightandvisibility.files.wordpress.com/2016/07/113.png">
+            <h3 style="text-shadow: 1px 1px 1px plum;">ภาพที่เกิดจากการสะท้อนของกระจกเงาโค้ง</h3>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRrqy9Yb5kFoJlU81f7YJY1ejk0xPagMROzciXtR_WummZr5s0jLzqz5LUoiszK-MZTN8&usqp=CAU">
+            <h3 style="text-shadow: 1px 1px 1px plum;">การหักเหของแสง</h3>
+            <img src="https://sites.google.com/site/teerawutcw/_/rsrc/1485142927253/kar-hakhe-khxng-saeng/23_4_2557_9_44_02.png">
+            <h3 style="text-shadow: 1px 1px 1px plum;">กรณีมีตัวกลางขั้นผ่าน</h3>
+            <img src="https://www.trueplookpanya.com/data/product/uploads/other4/Sci_M2_2_17.png">
+            <h3 style="text-shadow: 1px 1px 1px plum;">มุมวิกฤติและการสะท้อนกลับหมด</h3>
+            <p>มุมวิกฤติ คือ มุมตกกระทบที่ทำให้มุมหักเห 90<sup>◦</sup></p>
+            <img src="https://www.thaiedujobs.com/storage/lesson/elementary/science/content/s023_008.png">
+            <p>มุมตกกระทบ > มุมวิกฤติ จะเกิดการสะท้อนกลับหมด</p>
+            <h3 style="text-shadow: 1px 1px 1px plum;">การหักเหของแสงผ่านเลนส์บาง</h3>
+            <img src="https://1.bp.blogspot.com/-QtGnIQw-ir8/XSbYL8LqVkI/AAAAAAAABOw/5maUlY2or5Yq3DmCl9UAwaWCEIHSjnGxACEwYBhgL/s1600/lens1.jpg">
+            <h3 style="text-shadow: 1px 1px 1px plum;">เลนส์นูน</h3>
+            <p style="color: darkred;font-weight: bold;">จะเกิด ภาพจริง หัวหลับได้ทุกขนาดยกเว้น (อนันต์) แต่จะเกิดภาพเสมือน หัวกลับขนาดใหญ่กว่าวัตถุเท่านั้น</p>
+            <h3 style="text-shadow: 1px 1px 1px plum;">เลนส์เว้า</h3>
+            <p style="color: darkblue;font-weight: bold;">จะเกิดภาพเสมือหัวตั้งขนาดเล็กเสมอ</p>
+            <h3 style="text-shadow: 1px 1px 1px plum;">การเอาเลนส์ไปคำนวณ</h3>
+            <p>เลนส์เว้า = กระจกนูน<br>เลนส์นูน = กระจกเว้า</p>
+            <h3 style="text-shadow: 1px 1px 1px plum;">การเกิดภาพที่เดียวกับวัตถุ</h3>
+            <p>- ภาพที่เกิดที่เดียวกับวัตถุได้แสดงว่าแสงต้องการเคลื่อนที่ไปตกตั้งฉากกับกระจกแล้ว สะท้อนทางเดิม รังสีของแสงจึงมาตัดกันที่เดิม<br>
+            - ควรใช้วัตถุเป็นจุด จะได้วาดทางเดินของแสงได้ง่าย</p>
+            <img src="data:image/jpeg;base64,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">
+          </div>
+          <div class="block-right2">
+          </div>
+        </div>
+      </div>
+       <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-row">
+          <div class="footer-col">
+            <h3>เกี่ยวกับเรา</h3>
+            <ul>
+              <li><a href="#">การทำงาน</a></li>
+              <li><a href="#">ประวัติ</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>ข้อมูลติดต่อ</h3>
+            <ul>
+              <li><p1>เบอร์โทรศัพท์ : 092-446-8583 </p1></li>
+              <li><p1>email : micmin0101@gmail.com</p1></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>เเหล่งที่มา</h3>
+            <ul>
+              <li><a href="#">รูปภาพ</a></li>
+              <li><a href="#">เนื้อหา</a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Social Media</h3>
+            <ul>
+              <li><a href="#">Instragram</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">line</a></li>
+            </ul>
+          </div>
+            
+        </div>
+      </div>
+      <p class="font2">@Copyright 2023</p>
+    </footer>
+  </body>
+</html>

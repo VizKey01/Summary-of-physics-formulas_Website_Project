@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+      background-color:#fafafa ;
+      margin:0;
+      padding:0;
+      }
+      /*ใส่เงา*/
+      :root{
+        --shadow:0 6px 12px rgba(104,104,104,0.8);
+      }
+      .headerbar{
+        background-color:#D9D8D7;
+        height:53px;
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 3;
+      }
+      .menu-bar {
+        background-color: #D9D8D7;
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        position:fixed;
+        top:0;
+        right:0;
+        left:0;
+        font-family:Good Times;
+        z-index:3;
+        max-width: 1600px;
+        margin: auto;
+      }
+      .item {
+        color: black;
+        background-color: transparent;
+        font-size: 18px;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 8px 16px;
+        text-decoration:none;
+        margin:auto;
+      }
+      .item.title {
+        font-weight: 600;
+        font-size:25px;
+        margin-top:5px;
+      }
+      .search-input{
+        padding:6px;
+      }
+      .search-text{
+        display:none;
+      }
+      @media screen and (min-width:500px){
+        .search-text{
+          display:inline-block;
+        }
+      }
+      #font{
+        font-family:Good Times;
+        text-decoration:none;
+        }
+        .info-box1{
+        grid-area:info-box1;
+        background-color: #D9D8D7;
+        margin:auto;
+        align-items:center;
+        justify-items:center;
+        display:inline-block;
+        padding: 8px 16px;
+      }
+      .info-box1 ul{
+        list-style:none;
+        text-align:center;
+        padding:0px;
+        margin:1px;
+        background-color: #D9D8D7;
+      }
+      .info-box1 li{
+        font-size:20px;
+        text-align:left;
+        line-height:24px;
+      }
+      .info-box1 a{
+        text-decoration:none;
+        display:block;
+        color:black;
+        padding:5px 16px;
+        border-bottom:none;
+        transition:0.5s;
+        text-align:center;
+      }
+      .info-box1 a:hover{
+        background-color:gray;
+      }
+      .info-box1 li li{
+        font-size:15px;
+        text-align:center;
+        padding:0;
+        margin:0;
+        display:block;
+      }
+      @media screen and (min-width:650px){
+        .info-box1 il{
+          width:100px;
+          border-bottom:none;
+          height:50px;
+          line-height:50px;
+          display:inline-block;
+          margin-right:-8px;
+        }
+      } 
+      .info-box1 a{
+        border-bottom:none;
+      }
+      .info-box1 > ul> li{
+        text-align:center;
+      }
+      .info-box1 > ul > li > a{
+        padding-left:0;
+      }
+      .info-box1 li ul{
+        position:absolute;
+        display:none;
+        width:inherit;
+      }
+      .info-box1 li:hover ul{
+        display:block;
+      }
+      .info-box1 li ul li{
+        display:block;
+      }
+      .search-box{
+        width:150px;
+        background-color:white;
+        border-radius:20px;
+        display:flex;
+        align-items:center;
+        padding:0 15px;
+        display:inline-block;
+      }
+      .search-box input{
+        width:100%;
+        background:transparent;
+        outline:none;
+        border:0;
+        padding:10px;
+      }
+      .footer{
+        color:white;
+        background-color:#696969 ;
+        width:auto;
+        padding:70px 0;
+        box-sizing:border-box;
+        margin:auto;
+      }
+      .footer-container{
+        max-width:1200px;
+        background-color:red,none;
+        margin:auto;
+      }
+      ul{
+        list-style:none;
+        padding:6px;
+      }
+      .footer-row{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+      .footer-col{
+        width:22%;
+        padding:0 15px;
+      }
+      .footer-col h3{
+        font-size:20px;
+        color:white;
+        text-transform:capitatize;
+        margin-bottom:30px;
+        position:relative;
+      }
+      .footer-col h3::before{
+        content:'';
+        position:absolute;
+        left:0;
+        bottom:-10px;
+        background-color:white;
+        height:2px;
+        box-sizing:border-box;
+        width:110px;
+      }
+      .footer-col ul li:not(:last-child){
+        margin-bottom:10px;
+      }
+      .footer-col ul li a{
+        font-size:18px;
+        text-transform:capitalize;
+        color:lightgray;
+        text-decoration:none;
+        display:block;
+        transition:all 0.3s ease;
+      }
+      .footer-col ul li a:hover{
+        color:black;
+        padding-left:15px;
+      }
+      @media screen and (max-width:1000px){
+        .footer-col{
+          width:45%;
+          margin-bottom:30px;
+        }
+      }
+      @media screen and (max-width:580px){
+        .footer-col{
+          width:60%;
+          margin-bottom:30px;
+        }
+      }
+      .font2{
+        text-align:center;
+        color: white;
+      }
+      .main{
+        display: block;
+        min-height: 500px;
+        max-width: 1600px;
+        margin: auto;
+        background-color: white;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+      .sub-main{
+        display: grid;
+        justify-content: center;
+        z-index: 1;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr 2fr;
+        column-gap: 10px;
+        row-gap: 10px;
+        grid-template-areas: 'block-left block-right'
+                             'block-left block-right2';
+      }
+      .block-left{
+        display: flex;
+        background-color: white;
+        max-width: 1000px;
+        min-height: 200px;
+        margin-left: 20px;
+        margin-top: 20px;
+        width: 1000px;
+        padding: 20px;
+        grid-area: block-left;
+        flex-direction: column;
+
+      }
+      @media screen and (max-width:1000px){
+        .block-left{
+          width:60%;
+          margin-bottom:30px;
+        }
+      }
+      @media screen and (max-width:580px){
+        .block-left{
+          width:80%;
+          margin-bottom:30px;
+        }
+      }
+      @media screen and (max-width:1000px){
+        .block-right{
+          width:25%;
+          margin-bottom:30px;
+        }
+      }
+      @media screen and (max-width:580px){
+        .block-right{
+          width:40%;
+          margin-bottom:30px;
+        }
+      }
+      .block-right{
+        background-position: center;
+        background-size: 100%;
+        display: flex;
+        background-color: whitesmoke;
+        max-width: 600px;
+        max-height: 200px;
+        margin-right: 20px;
+        margin-top: 20px;
+        padding: 20px;
+        grid-area: block-right;
+      }
+      .block-right2 {
+        background-image :url("https://www.physio-pedia.com/images/2/25/Baseball_pitching_motion_2004.jpg");
+        display: flex;
+        background-color: whitesmoke;
+        max-width: 600px;
+        max-height: 200px;
+        margin-right: 20px;
+        margin-top: 20px;
+        width: 400px;
+        padding: 20px;
+        grid-area: block-right2;
+      }
+      @media screen and (max-width:1000px){
+        .block-right2{
+          width:25%;
+          margin-bottom:30px;
+        }
+      }
+      @media screen and (max-width:580px){
+        .block-right2{
+          width:20%;
+          margin-bottom:30px;
+        }
+      }
+      img{
+        display: flex;
+        max-height: 250px;
+        align-self: center;
+      }
+      #img {
+        display: flex;
+        width: 100px;
+        height: 60px;
+        align-self: center;
+      }
+      p {
+        color: black;
+        font-family: 'Good Times';
+        font-weight: 300;
+        font-size: 18px;
+      }
+
+    
+      </style>
+    <title>รวมสูตรฟิสิกส์ ม.ปลาย</title>
+  </head>
+  <body>
+      <div class="headerbar"> 
+        <div class="menu-bar">
+          <div class="group">
+            <a href="https://script.google.com/macros/s/AKfycbxiKXjENvXfZQ9VWSfI_6QWjmszxSOBRcxNvzBOeZIxJMMKvFVDoVscrCYhVISL1C_Aiw/exec" class="item title">FORMULARS</a>
+          </div>
+          <div class="group">
+              <div class="item"> 
+                <div class="search-box">
+                <input type="text" placeholder="ค้นหาสูตร">
+                </div>
+              </div> 
+            <div class="info-box1">
+              <ul>
+                <li><a href="#">ข้อสอบPAT3</a>
+                  <ul>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2564/">pat64</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2563/">pat63</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2562/">pat62</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2561/">pat61</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2560/">pat60</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2559/">pat59</a></li>
+                    <li><a href="https://www.physicsblueprint.com/exam-pat3/pat3-2558/">pat58</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="info-box1">
+              <ul>
+                <li><a href="#">ข้อสอบอื่นๆ</a>
+                  <ul>
+                    <li><a href="#">pat64</a></li>
+                    <li><a href="#">pat63</a></li>
+                    <li><a href="#">pat62</a></li>
+                    <li><a href="#">pat61</a></li>
+                    <li><a href="#">pat60</a></li>
+                    <li><a href="#">pat59</a></li>
+                    <li><a href="#">pat58</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main">
+        <div class="sub-main">
+          <div class="block-left">
+            <h2 style="color: midnightblue;text-shadow: darkblue;text-shadow: 1px 1px #696969;">การเคลื่อนที่แบบหมุน</h2>
+            <h3 style="text-shadow: 1px 1px 1px plum;">ปริมาณการเคลื่อนที่แบบหมุน</h3>
+            <p>การกระจัดเชิงมุม (φ) <text style="color: palevioletred;">หน่วย (rad)</text> โดยที่ S = φr<br>
+            ความเร็วเชิงมุม (ω) <text style="color: palevioletred;">หน่วย (rad/s)</text> โดยที่ V = ωr </p>
+            <img src="https://th.calcprofi.com/uglovoye_uskoreniye/ug_skorost.gif">
+            <p>ความเร่งเชิงมุม (α) <text style="color: palevioletred;">หน่วย (rad/s<sup>2</sup>)</text> โดยที่ a = αr</p>
+            <img src="https://panyasociety.com/pages/wp-content/uploads/2020/09/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%AB%E0%B8%A1%E0%B8%B8%E0%B8%99_%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B9%80%E0%B8%A3%E0%B9%88%E0%B8%87%E0%B9%80%E0%B8%8A%E0%B8%B4%E0%B8%87%E0%B8%A1%E0%B8%B8%E0%B8%A1%E0%B8%84%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88.jpg">
+            <p style="color: purple;">เปรียบเทียบปริมาณ เชิงมุม vs เชิงเส้นและกับสมการเส้นตรง</p>
+            <img src="http://119.46.166.126/self_all/selfaccess11/m5/physics5_1/lesson3/image/pic28.png"><br><br>
+            <img src="https://seasky2317.files.wordpress.com/2015/09/image.jpg">
+            <h3 style="text-shadow: 1px 1px 1px plum;">โมเมนต์ความเฉื่อย (Moment of Inertia)(I) หน่วย kg.m<sup>2</sup></h3>
+            <p> I มาก --> หมุนยาก หยุดยาก<br> I น้อย --> หมุนง่าย หยุดง่าย</p>
+            <img src="http://119.46.166.126/self_all/selfaccess11/m5/physics5_1/lesson3/image/pic45.png">
+            <img src="https://drive.google.com/uc?id=1pids-T9apq7DdrMfES17r13i9Hdovoi8">
+            <h3 style="text-shadow: 1px 1px 1px plum;">ทอร์ก (Torgue)(T)</h3>
+            <p>เป็นโมเมนต์ของแรงทีทำให้เกิดการหมุน <text style="color: green;">หน่วย (N.m)</text></p>
+            <img src="https://panyasociety.com/pages/wp-content/uploads/2020/09/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%AB%E0%B8%A1%E0%B8%B8%E0%B8%99_%E0%B8%97%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%841.jpg">
+            <img src="https://panyasociety.com/pages/wp-content/uploads/2020/09/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%AB%E0%B8%A1%E0%B8%B8%E0%B8%99_%E0%B8%97%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%842.jpg">
+            <h3 style="text-shadow: 1px 1px 1px plum;">พลังงานจลน์ของการหมุน (E<sub>k</sub>)</h3>
+            <p>ขณะวัตถุหมุนจะมีพลังงานจลน์ คือ </p>
+            <img src="https://panyasociety.com/pages/wp-content/uploads/2020/09/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%AB%E0%B8%A1%E0%B8%B8%E0%B8%99_%E0%B8%9E%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%88%E0%B8%A5%E0%B8%99%E0%B9%8C%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AB%E0%B8%A1%E0%B8%B8%E0%B8%99.jpg">
+            <p>ถ้าวัตถุกลิ้งไป คือ ทั้งหมุนและเลื่อนไปด้วย จะมีพลังงานจลน์</p>
+            <img src="https://drive.google.com/uc?id=1t-GA66F55COE26UAYHgi9oKtCV1mubhY">
+            <h3 style="text-shadow: 1px 1px 1px plum;">โมเมนตัมเชิงมุม (L)</h3>
+            <img src="https://panyasociety.com/pages/wp-content/uploads/2020/09/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%AB%E0%B8%A1%E0%B8%B8%E0%B8%99_%E0%B9%82%E0%B8%A1%E0%B9%80%E0%B8%A1%E0%B8%99%E0%B8%95%E0%B8%B1%E0%B8%A1%E0%B9%80%E0%B8%8A%E0%B8%B4%E0%B8%87%E0%B8%A1%E0%B8%B8%E0%B8%A1.jpg">
+          </div>
+          <div class="block-right2">
+          </div>
+        </div>
+      </div>
+       <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-row">
+          <div class="footer-col">
+            <h3>เกี่ยวกับเรา</h3>
+            <ul>
+              <li><a href="#">การทำงาน</a></li>
+              <li><a href="#">ประวัติ</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>ข้อมูลติดต่อ</h3>
+            <ul>
+              <li><p1>เบอร์โทรศัพท์ : 092-446-8583 </p1></li>
+              <li><p1>email : micmin0101@gmail.com</p1></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>เเหล่งที่มา</h3>
+            <ul>
+              <li><a href="#">รูปภาพ</a></li>
+              <li><a href="#">เนื้อหา</a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Social Media</h3>
+            <ul>
+              <li><a href="#">Instragram</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">line</a></li>
+            </ul>
+          </div>
+            
+        </div>
+      </div>
+      <p class="font2">@Copyright 2023</p>
+    </footer>
+  </body>
+</html>
